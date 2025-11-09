@@ -14,7 +14,7 @@ app = cdk.App()
 
 # Environment configuration
 env = cdk.Environment(
-    account="YOUR_AWS_ACCOUNT_ID",  # Replace with your AWS account ID
+    account="560271561576",  # Replace with your AWS account ID
     region="us-east-1"  # Or your preferred region
 )
 
@@ -60,6 +60,7 @@ api_stack = ApiStack(
     risk_score_handler=lambda_stack.risk_score_handler,
     approve_handler=lambda_stack.approve_handler,
     create_vendor_handler=lambda_stack.create_vendor_handler,
+    db_init_handler=lambda_stack.db_init_handler,
     description="REST API Gateway for vendor onboarding portal",
     env=env
 )
