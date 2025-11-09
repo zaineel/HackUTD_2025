@@ -39,18 +39,21 @@ const GSLoginPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gs-navy to-gs-blue flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen gs-gradient-bg flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
-        <div className="bg-white rounded-2xl shadow-2xl p-8">
+        <div className="bg-white rounded-3xl shadow-gs-xl p-10 border-2 border-gs-gold/20">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="text-6xl mb-4">🏦</div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
-              Goldman Sachs
+            <div className="inline-block mb-4 bg-gradient-to-br from-gs-navy to-gs-navy-light p-4 rounded-2xl shadow-gs">
+              <div className="text-5xl">🏛️</div>
+            </div>
+            <h2 className="text-4xl font-bold text-gs-navy mb-2 tracking-tight">
+              Enterprise
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gs-gray-600 font-medium">
               Vendor Management System
             </p>
+            <div className="w-20 h-1 bg-gradient-to-r from-gs-blue to-gs-gold mx-auto mt-4"></div>
           </div>
 
           {/* Error Message */}
@@ -81,7 +84,7 @@ const GSLoginPage = () => {
                 value={credentials.email}
                 onChange={handleChange}
                 className="input-field"
-                placeholder="user@gs.com"
+                placeholder="user@enterprise.com"
               />
             </div>
 
@@ -141,19 +144,19 @@ const GSLoginPage = () => {
           </form>
 
           {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gs-gray-600">
               For vendor access,{' '}
-              <a href="/" className="font-medium text-gs-blue hover:text-blue-700">
+              <a href="/" className="font-semibold text-gs-blue hover:text-gs-blue-dark transition-colors">
                 click here
               </a>
             </p>
           </div>
 
           {/* Demo Info */}
-          <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="text-xs text-blue-800 text-center">
-              <strong>Demo:</strong> Use any email and password to login
+          <div className="mt-6 bg-gradient-to-r from-gs-blue/10 to-gs-gold/10 border-2 border-gs-gold/30 rounded-xl p-4">
+            <p className="text-xs text-gs-navy text-center font-medium">
+              <strong className="text-gs-gold">🔓 Demo Mode:</strong> Use any email and password to login
             </p>
           </div>
         </div>

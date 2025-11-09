@@ -44,7 +44,7 @@ const RegisterPage = () => {
               Vendor Registration
             </h1>
             <p className="text-lg text-gray-600">
-              Start your onboarding journey with Goldman Sachs
+              Start your onboarding journey
             </p>
           </div>
 

@@ -8,8 +8,8 @@ const Navbar = () => {
 
   const isActive = (path) => {
     return location.pathname === path
-      ? 'text-white bg-gs-navy'
-      : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+      ? 'text-white bg-gs-blue shadow-gs'
+      : 'text-white/80 hover:text-white hover:bg-white/10'
   }
 
   const handleLogout = () => {
@@ -24,15 +24,13 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-gs-blue shadow-lg">
+    <nav className="bg-gradient-to-r from-gs-navy to-gs-navy-light shadow-gs-lg border-b border-gs-gold/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-white text-xl font-bold">
-                Goldman Sachs
-              </span>
-              <span className="ml-2 text-gray-300 text-sm hidden sm:block">
+            <Link to="/" className="flex-shrink-0 flex items-center group">
+              <span className="text-2xl mr-2 transform group-hover:scale-110 transition-transform">🏛️</span>
+              <span className="text-white text-xl font-bold tracking-tight">
                 Vendor Onboarding Platform
               </span>
             </Link>
@@ -58,7 +56,7 @@ const Navbar = () => {
                   to="/gs/login"
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/gs/login')}`}
                 >
-                  GS Login
+                  Team Login
                 </Link>
               </>
             )}
@@ -68,10 +66,10 @@ const Navbar = () => {
               <>
                 <Link
                   to="/vendor/dashboard"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                     location.pathname.includes('/vendor/dashboard')
-                      ? 'text-white bg-gs-navy'
-                      : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+                      ? 'text-white bg-gs-blue shadow-gs'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   Dashboard
@@ -79,10 +77,10 @@ const Navbar = () => {
 
                 <Link
                   to="/vendor/upload"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                     location.pathname.includes('/vendor/upload')
-                      ? 'text-white bg-gs-navy'
-                      : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+                      ? 'text-white bg-gs-blue shadow-gs'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   Upload
@@ -90,10 +88,10 @@ const Navbar = () => {
 
                 <Link
                   to="/vendor/questionnaire"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                     location.pathname.includes('/vendor/questionnaire')
-                      ? 'text-white bg-gs-navy'
-                      : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+                      ? 'text-white bg-gs-blue shadow-gs'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   Questionnaire
@@ -101,7 +99,7 @@ const Navbar = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gs-navy/50 transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-white hover:bg-red-500/20 border border-white/20 transition-all ml-2"
                 >
                   Logout
                 </button>
@@ -113,22 +111,23 @@ const Navbar = () => {
               <>
                 <Link
                   to="/gs/dashboard"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                     location.pathname.includes('/gs/dashboard')
-                      ? 'text-white bg-gs-navy'
-                      : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+                      ? 'text-white bg-gs-gold shadow-gs'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   Dashboard
                 </Link>
 
-                <div className="px-3 py-2 text-sm font-medium text-gray-300">
+                <div className="px-4 py-2 text-sm font-medium text-gs-gold flex items-center">
+                  <span className="mr-2">👤</span>
                   {gsUser.email}
                 </div>
 
                 <button
                   onClick={handleLogout}
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gs-navy/50 transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-white hover:bg-red-500/20 border border-white/20 transition-all ml-2"
                 >
                   Logout
                 </button>

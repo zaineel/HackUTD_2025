@@ -270,6 +270,18 @@ vendorDatabase[sampleVendorId] = {
 export const mockVendors = [
   {
     id: 'vendor-001',
+    company_name: 'Tech Vendor',
+    contact_email: 'contact@techvendor.invalid',
+    ein: '12-3456789',
+    address: '123 Silicon Valley, CA 94025',
+    contact_phone: '+1-650-555-0100',
+    status: 'pending',
+    risk_score: 72,
+    created_at: '2024-01-17T09:15:00Z',
+    updated_at: '2024-01-17T09:15:00Z'
+  },
+  {
+    id: 'vendor-002',
     company_name: 'Microsoft Corporation',
     contact_email: 'info@microsoft.com',
     ein: '91-1144442',
@@ -281,7 +293,7 @@ export const mockVendors = [
     updated_at: '2024-01-15T10:30:00Z'
   },
   {
-    id: 'vendor-002',
+    id: 'vendor-003',
     company_name: 'Apple Inc',
     contact_email: 'contact@apple.com',
     ein: '94-2404110',
@@ -293,7 +305,7 @@ export const mockVendors = [
     updated_at: '2024-01-12T09:15:00Z'
   },
   {
-    id: 'vendor-003',
+    id: 'vendor-004',
     company_name: 'Amazon.com Inc',
     contact_email: 'sales@amazon.com',
     ein: '91-1646860',
@@ -305,7 +317,7 @@ export const mockVendors = [
     updated_at: '2024-01-09T16:30:00Z'
   },
   {
-    id: 'vendor-004',
+    id: 'vendor-005',
     company_name: 'Tesla Inc',
     contact_email: 'info@tesla.com',
     ein: '91-2197729',
@@ -317,7 +329,7 @@ export const mockVendors = [
     updated_at: '2024-01-14T11:00:00Z'
   },
   {
-    id: 'vendor-005',
+    id: 'vendor-006',
     company_name: 'Northwind Traders',
     contact_email: 'contact@northwind.fake',
     ein: '123456789',
@@ -329,7 +341,7 @@ export const mockVendors = [
     updated_at: '2024-01-07T10:45:00Z'
   },
   {
-    id: 'vendor-006',
+    id: 'vendor-007',
     company_name: 'Acme Logistics LLC',
     contact_email: 'support@acme-logistics.invalid',
     ein: '98-7654321',
@@ -341,7 +353,7 @@ export const mockVendors = [
     updated_at: '2024-01-04T15:20:00Z'
   },
   {
-    id: 'vendor-007',
+    id: 'vendor-008',
     company_name: 'Quantum Apex Solutions',
     contact_email: 'hello@quantum-apex.biz',
     ein: '00-1234567',
@@ -353,7 +365,7 @@ export const mockVendors = [
     updated_at: '2024-01-16T15:45:00Z'
   },
   {
-    id: 'vendor-008',
+    id: 'vendor-009',
     company_name: 'Skyline Media Group',
     contact_email: 'info@skylinemedia.co',
     ein: '45-0000001',
