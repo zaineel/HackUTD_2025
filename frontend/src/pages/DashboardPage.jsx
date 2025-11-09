@@ -16,7 +16,7 @@ const DashboardPage = () => {
       // Get vendor ID from localStorage
       const storedVendorId = localStorage.getItem('vendorId')
       if (!storedVendorId) {
-        navigate('/register')
+        navigate('/vendor/register')
         return
       }
 
@@ -64,7 +64,7 @@ const DashboardPage = () => {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
               <p className="text-red-800 font-medium mb-2">{error}</p>
-              <button onClick={() => navigate('/register')} className="btn-primary mt-4">
+              <button onClick={() => navigate('/vendor/register')} className="btn-primary mt-4">
                 Return to Registration
               </button>
             </div>
@@ -182,7 +182,7 @@ const DashboardPage = () => {
                       <p className="text-blue-100 mb-4">
                         View your detailed risk analysis and compliance breakdown
                       </p>
-                      <Link to="/risk" className="inline-block bg-white text-gs-blue px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition">
+                      <Link to="/vendor/risk" className="inline-block bg-white text-gs-blue px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 transition">
                         View Risk Report
                       </Link>
                     </div>
@@ -203,11 +203,14 @@ const DashboardPage = () => {
                   Quick Actions
                 </h3>
                 <div className="space-y-3">
-                  <Link to="/upload" className="block w-full btn-primary text-center">
+                  <Link to="/vendor/upload" className="block w-full btn-primary text-center">
                     Upload Documents
                   </Link>
+                  <Link to="/vendor/questionnaire" className="block w-full btn-primary text-center">
+                    KY3P Questionnaire
+                  </Link>
                   {vendorData.risk_score && (
-                    <Link to="/risk" className="block w-full btn-secondary text-center">
+                    <Link to="/vendor/risk" className="block w-full btn-secondary text-center">
                       View Risk Score
                     </Link>
                   )}

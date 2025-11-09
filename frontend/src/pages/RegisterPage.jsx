@@ -23,7 +23,7 @@ const RegisterPage = () => {
 
       // Navigate to upload page after brief success message
       setTimeout(() => {
-        navigate('/upload')
+        navigate('/vendor/upload')
       }, 1500)
 
     } catch (err) {

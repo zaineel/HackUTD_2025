@@ -12,8 +12,8 @@ const generateId = () => {
   });
 };
 
-// Mock vendor database
-let mockVendors = {};
+// Mock vendor database (for createVendor storage)
+let vendorDatabase = {};
 
 export const mockData = {
   /**
@@ -31,7 +31,7 @@ export const mockData = {
       created_at: new Date().toISOString()
     };
 
-    mockVendors[vendorId] = vendor;
+    vendorDatabase[vendorId] = vendor;
 
     return new Promise((resolve) => {
       setTimeout(() => resolve(vendor), 500); // Simulate network delay
@@ -44,7 +44,7 @@ export const mockData = {
   getStatus: (vendorId) => {
     const baseStatus = {
       vendor_id: vendorId,
-      company_name: mockVendors[vendorId]?.company_name || 'Demo Company Inc',
+      company_name: vendorDatabase[vendorId]?.company_name || 'Demo Company Inc',
       status: 'under_review',
       onboarding_progress: 65,
       ky3p_assessment_id: `KY3P-${vendorId.substring(0, 8).toUpperCase()}`,
@@ -214,7 +214,7 @@ export const mockData = {
       status: approvalData.approved ? 'approved' : 'rejected',
       approved: approvalData.approved,
       approved_at: new Date().toISOString(),
-      message: `Vendor ${mockVendors[vendorId]?.company_name || 'Demo Company'} has been ${approvalData.approved ? 'approved' : 'rejected'}`
+      message: `Vendor ${vendorDatabase[vendorId]?.company_name || 'Demo Company'} has been ${approvalData.approved ? 'approved' : 'rejected'}`
     };
 
     return new Promise((resolve) => {
@@ -252,7 +252,7 @@ export const mockData = {
 
 // Initialize with a sample vendor for testing
 const sampleVendorId = '550e8400-e29b-41d4-a716-446655440000';
-mockVendors[sampleVendorId] = {
+vendorDatabase[sampleVendorId] = {
   id: sampleVendorId,
   company_name: 'TechVendor Inc',
   contact_email: 'contact@techvendor.com',
@@ -265,5 +265,105 @@ mockVendors[sampleVendorId] = {
   slp_supplier_id: 'SLP-550E8400',
   created_at: '2025-11-05T10:30:00Z'
 };
+
+// Mock vendors list for GS Dashboard
+export const mockVendors = [
+  {
+    id: 'vendor-001',
+    company_name: 'TechVentures Inc',
+    contact_email: 'info@techventures.com',
+    ein: '45-8765432',
+    address: '100 Silicon Valley Blvd, San Francisco, CA 94102',
+    contact_phone: '+1-415-555-0101',
+    status: 'pending',
+    risk_score: null,
+    created_at: '2024-01-15T10:30:00Z',
+    updated_at: '2024-01-15T10:30:00Z'
+  },
+  {
+    id: 'vendor-002',
+    company_name: 'Global Solutions LLC',
+    contact_email: 'contact@globalsolutions.com',
+    ein: '23-9876543',
+    address: '500 Market Street, Boston, MA 02101',
+    contact_phone: '+1-617-555-0202',
+    status: 'approved',
+    risk_score: 85,
+    created_at: '2024-01-10T14:20:00Z',
+    updated_at: '2024-01-12T09:15:00Z'
+  },
+  {
+    id: 'vendor-003',
+    company_name: 'Quantum Data Systems',
+    contact_email: 'sales@quantumdata.com',
+    ein: '67-5432109',
+    address: '250 Park Avenue, New York, NY 10017',
+    contact_phone: '+1-212-555-0303',
+    status: 'approved',
+    risk_score: 92,
+    created_at: '2024-01-08T08:45:00Z',
+    updated_at: '2024-01-09T16:30:00Z'
+  },
+  {
+    id: 'vendor-004',
+    company_name: 'SecureNet Technologies',
+    contact_email: 'info@securenet.com',
+    ein: '89-1234567',
+    address: '1200 Tech Drive, Austin, TX 78701',
+    contact_phone: '+1-512-555-0404',
+    status: 'pending',
+    risk_score: null,
+    created_at: '2024-01-14T11:00:00Z',
+    updated_at: '2024-01-14T11:00:00Z'
+  },
+  {
+    id: 'vendor-005',
+    company_name: 'CloudFirst Solutions',
+    contact_email: 'hello@cloudfirst.com',
+    ein: '34-7891234',
+    address: '800 Innovation Way, Seattle, WA 98101',
+    contact_phone: '+1-206-555-0505',
+    status: 'rejected',
+    risk_score: 45,
+    created_at: '2024-01-05T13:20:00Z',
+    updated_at: '2024-01-07T10:45:00Z'
+  },
+  {
+    id: 'vendor-006',
+    company_name: 'DataFlow Analytics',
+    contact_email: 'contact@dataflow.com',
+    ein: '56-3456789',
+    address: '300 Analytics Plaza, Chicago, IL 60601',
+    contact_phone: '+1-312-555-0606',
+    status: 'approved',
+    risk_score: 88,
+    created_at: '2024-01-03T09:10:00Z',
+    updated_at: '2024-01-04T15:20:00Z'
+  },
+  {
+    id: 'vendor-007',
+    company_name: 'InnovateTech Partners',
+    contact_email: 'partnerships@innovatetech.com',
+    ein: '78-9012345',
+    address: '600 Innovation Street, Denver, CO 80202',
+    contact_phone: '+1-303-555-0707',
+    status: 'pending',
+    risk_score: null,
+    created_at: '2024-01-16T15:45:00Z',
+    updated_at: '2024-01-16T15:45:00Z'
+  },
+  {
+    id: 'vendor-008',
+    company_name: 'Enterprise Solutions Group',
+    contact_email: 'info@enterprisesg.com',
+    ein: '12-6789012',
+    address: '450 Corporate Drive, Atlanta, GA 30303',
+    contact_phone: '+1-404-555-0808',
+    status: 'approved',
+    risk_score: 90,
+    created_at: '2023-12-28T10:30:00Z',
+    updated_at: '2024-01-02T14:15:00Z'
+  }
+];
 
 export default mockData;

@@ -1,13 +1,26 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const vendorId = localStorage.getItem('vendorId')
+  const gsUser = JSON.parse(localStorage.getItem('gsUser') || 'null')
 
   const isActive = (path) => {
     return location.pathname === path
       ? 'text-white bg-gs-navy'
       : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('vendorId')
+    localStorage.removeItem('gsUser')
+    navigate('/')
+  }
+
+  // Don't show navbar on login page
+  if (location.pathname === '/gs/login') {
+    return null
   }
 
   return (
@@ -20,34 +33,43 @@ const Navbar = () => {
                 Goldman Sachs
               </span>
               <span className="ml-2 text-gray-300 text-sm hidden sm:block">
-                Vendor Onboarding Hub
+                Vendor Onboarding Platform
               </span>
             </Link>
           </div>
 
           <div className="flex items-center space-x-1">
-            <Link
-              to="/"
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/')}`}
-            >
-              Home
-            </Link>
-
-            {!vendorId && (
-              <Link
-                to="/register"
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/register')}`}
-              >
-                Register
-              </Link>
-            )}
-
-            {vendorId && (
+            {/* Public Navigation */}
+            {!vendorId && !gsUser && (
               <>
                 <Link
-                  to={`/dashboard/${vendorId}`}
+                  to="/"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/')}`}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/vendor/register"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/vendor/register')}`}
+                >
+                  Vendor Registration
+                </Link>
+                <Link
+                  to="/gs/login"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive('/gs/login')}`}
+                >
+                  GS Login
+                </Link>
+              </>
+            )}
+
+            {/* Vendor Navigation */}
+            {vendorId && !gsUser && (
+              <>
+                <Link
+                  to="/vendor/dashboard"
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname.includes('/dashboard')
+                    location.pathname.includes('/vendor/dashboard')
                       ? 'text-white bg-gs-navy'
                       : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
                   }`}
@@ -56,9 +78,9 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                  to={`/upload/${vendorId}`}
+                  to="/vendor/upload"
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname.includes('/upload')
+                    location.pathname.includes('/vendor/upload')
                       ? 'text-white bg-gs-navy'
                       : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
                   }`}
@@ -67,15 +89,49 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                  to={`/risk/${vendorId}`}
+                  to="/vendor/questionnaire"
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname.includes('/risk')
+                    location.pathname.includes('/vendor/questionnaire')
                       ? 'text-white bg-gs-navy'
                       : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
                   }`}
                 >
-                  Risk Score
+                  Questionnaire
                 </Link>
+
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gs-navy/50 transition-colors"
+                >
+                  Logout
+                </button>
+              </>
+            )}
+
+            {/* GS User Navigation */}
+            {gsUser && (
+              <>
+                <Link
+                  to="/gs/dashboard"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    location.pathname.includes('/gs/dashboard')
+                      ? 'text-white bg-gs-navy'
+                      : 'text-gray-300 hover:text-white hover:bg-gs-navy/50'
+                  }`}
+                >
+                  Dashboard
+                </Link>
+
+                <div className="px-3 py-2 text-sm font-medium text-gray-300">
+                  {gsUser.email}
+                </div>
+
+                <button
+                  onClick={handleLogout}
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gs-navy/50 transition-colors"
+                >
+                  Logout
+                </button>
               </>
             )}
           </div>

@@ -91,3 +91,6 @@ infrastructure/lambda/*/python_dateutil/
 infrastructure/lambda/*/s3transfer/
 infrastructure/lambda/*/six/
 infrastructure/lambda/*/urllib3/
+
+# Documentation
+FAQ.pdf

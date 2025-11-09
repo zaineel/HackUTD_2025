@@ -15,7 +15,7 @@ const UploadPage = () => {
     const storedVendorId = localStorage.getItem('vendorId')
     if (!storedVendorId) {
       // Redirect to register if no vendor ID found
-      navigate('/register')
+      navigate('/vendor/register')
       return
     }
     setVendorId(storedVendorId)
@@ -54,7 +54,7 @@ const UploadPage = () => {
   }
 
   const handleContinue = () => {
-    navigate('/dashboard')
+    navigate('/vendor/questionnaire')
   }
 
   if (!vendorId) {
@@ -98,7 +98,7 @@ const UploadPage = () => {
                 <div className="w-10 h-10 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-bold">
                   3
                 </div>
-                <span className="ml-3 text-gray-600">Review</span>
+                <span className="ml-3 text-gray-600">Questionnaire</span>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const UploadPage = () => {
           {/* Action Buttons */}
           <div className="flex justify-between items-center">
             <button
-              onClick={() => navigate('/register')}
+              onClick={() => navigate('/vendor/register')}
               className="btn-secondary"
             >
               Back to Registration
@@ -154,7 +154,7 @@ const UploadPage = () => {
               disabled={!allDocumentsUploaded()}
               className={`btn-primary ${!allDocumentsUploaded() ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              {allDocumentsUploaded() ? 'Continue to Dashboard' : `Upload All Documents (${uploadedDocuments.length}/${requiredDocuments.length})`}
+              {allDocumentsUploaded() ? 'Continue to Questionnaire' : `Upload All Documents (${uploadedDocuments.length}/${requiredDocuments.length})`}
             </button>
           </div>
 

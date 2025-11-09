@@ -7,17 +7,45 @@ const HomePage = () => {
         {/* Hero Section */}
         <div className="text-center text-white mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Secure & Intelligent Onboarding Hub
+            Unified Vendor Onboarding Platform
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-blue-100">
-            Transforming vendor onboarding from 6 months to 2 weeks
+            Replacing Ariba and KY3P - One Platform for All Onboarding
           </p>
-          <p className="text-lg text-blue-200 max-w-3xl mx-auto mb-8">
-            Powered by AI-driven automation and AWS cloud infrastructure
+          <p className="text-lg text-blue-200 max-w-3xl mx-auto mb-12">
+            AI-driven automation reducing onboarding from 6 months to 2 weeks
           </p>
-          <Link to="/register" className="btn-primary inline-block text-lg px-8 py-4">
-            Start Onboarding Process
-          </Link>
+          
+          {/* User Type Selection */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Vendor Card */}
+            <Link to="/vendor/register" className="group">
+              <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300">
+                <div className="text-6xl mb-4">🏢</div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">I'm a Vendor</h2>
+                <p className="text-gray-600 mb-6">
+                  Submit your company information, upload documents, and complete the KY3P questionnaire
+                </p>
+                <div className="bg-gs-blue text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-blue-700 transition-colors">
+                  Start Onboarding →
+                </div>
+              </div>
+            </Link>
+
+            {/* Goldman Sachs Card */}
+            <Link to="/gs/login" className="group">
+              <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300">
+                <div className="text-6xl mb-4">🏦</div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Goldman Sachs Team</h2>
+                <p className="text-gray-600 mb-6">
+                  Review vendor submissions, documents, and questionnaire responses
+                </p>
+                <div className="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-gray-800 transition-colors">
+                  Access Dashboard →
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
 
         {/* Benefits Grid */}
