@@ -9,6 +9,7 @@ from stacks.storage_stack import StorageStack
 from stacks.database_stack import DatabaseStack
 from stacks.lambda_stack import LambdaStack
 from stacks.api_stack import ApiStack
+from stacks.bastion_stack import BastionStack
 
 app = cdk.App()
 
@@ -65,9 +66,19 @@ api_stack = ApiStack(
     env=env
 )
 
+# Stack 6: Bastion Host (Optional - for database access via Session Manager)
+bastion_stack = BastionStack(
+    app, "OnboardingHubBastionStack",
+    vpc=vpc_stack.vpc,
+    database_security_group=database_stack.database.connections.security_groups[0],
+    description="Bastion EC2 instance for secure RDS access via Session Manager",
+    env=env
+)
+
 # Add dependencies
 storage_stack.add_dependency(vpc_stack)
 database_stack.add_dependency(vpc_stack)
+# bastion_stack depends on database implicitly through security group reference
 lambda_stack.add_dependency(storage_stack)
 lambda_stack.add_dependency(database_stack)
 api_stack.add_dependency(lambda_stack)
